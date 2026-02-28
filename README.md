@@ -71,18 +71,5 @@ reg add "HKLM\SYSTEM\CurrentControlSet\Control\PriorityControl" /v "IRQ8Priority
 bcdedit /set disabledynamictick yes
 reg add "HKLM\SYSTEM\CurrentControlSet\Control\GraphicsDrivers" /v "HwSchMode" /t REG_DWORD /d 2 /f
 
-# --- 6. NETWORK & SSD PERFORMANCE ---
-Write-Host "[*] Accelerating I/O and Network Packets..." -ForegroundColor Cyan
-fsutil behavior set disable8dot3 1
-fsutil behavior set disablelastaccess 1
-reg add "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Multimedia\SystemProfile" /v "NetworkThrottlingIndex" /t REG_DWORD /d 0xffffffff /f
-netsh int tcp set global autotuninglevel=normal
-
-# --- 7. AESTHETIC BLACKOUT (THE ULTIMATE MINIMALIST UI) ---
-Write-Host "[*] Stripping UI Bloat (Blackout Mode)..." -ForegroundColor Cyan
-reg add "HKCU\Control Panel\Desktop" /v "Wallpaper" /t REG_SZ /d "" /f
-reg add "HKCU\Control Panel\Colors" /v "Background" /t REG_SZ /d "0 0 0" /f
-reg add "HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced" /v "HideIcons" /t REG_DWORD /d 1 /f
-reg add "HKCU\Software\
-
+# ---
 
